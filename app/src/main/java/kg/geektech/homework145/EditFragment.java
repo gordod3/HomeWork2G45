@@ -18,6 +18,9 @@ public class EditFragment extends Fragment {
     private String text;
     private int num;
 
+    // Сделал конструктор чтобы при создания фрагментов сохранять текс в EditText чтобы перенести его в следующий
+    // фрагмент. значение num это порядковый номер фрагментов чтобы пользователь мог отслеживать на каком
+    // фрагменте он сейчас находится.
     public EditFragment(@Nullable String text, int num) {
         this.text = text;
         this.num = num;
@@ -40,6 +43,9 @@ public class EditFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Сначало проверяю не является ли этот фрагмент пятым а потом уже делаю проверки на
+                // пустоту EditString и если не пусто то создаю новый фрагмент куда переношу текст и
+                // порядковый номер.
                 if (num != 5) {
                     if (!editText.getText().toString().isEmpty())
                         requireActivity().getSupportFragmentManager().beginTransaction().
